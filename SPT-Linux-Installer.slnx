@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SptLinuxInstaller.App/SptLinuxInstaller.App.csproj" />
+    <Project Path="src/SptLinuxInstaller.Core/SptLinuxInstaller.Core.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SptLinuxInstaller.Tests/SptLinuxInstaller.Tests.csproj" />
+  </Folder>
+  <Folder Name="/tools/">
+    <Project Path="tools/SptLinuxInstaller.Smoke/SptLinuxInstaller.Smoke.csproj" />
+  </Folder>
+</Solution>

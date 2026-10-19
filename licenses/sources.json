@@ -1,0 +1,105 @@
+{
+  "verifiedAtUtc": "2026-10-19T14:45:14.1731214Z",
+  "basis": "Restored win-x64 self-contained application dependencies; full upstream texts copied without content changes.",
+  "files": [
+    {
+      "component": "SSH.NET",
+      "version": "2026.0.0",
+      "file": "SSH.NET/LICENSE",
+      "source": "https://raw.githubusercontent.com/sshnet/SSH.NET/7b2fd3dbf2c86a80a7b06cea020aa5f821c9902e/LICENSE",
+      "sourcePath": null,
+      "sha256": "84c79a38515de2833a7c353395e04056c0cbd77545d450fe216d569e1570b78e",
+      "bytes": 1117
+    },
+    {
+      "component": "BouncyCastle.Cryptography",
+      "version": "2.7.0",
+      "file": "BouncyCastle.Cryptography/LICENSE.md",
+      "source": "https://api.nuget.org/v3-flatcontainer/bouncycastle.cryptography/2.7.0/bouncycastle.cryptography.2.7.0.nupkg",
+      "sourcePath": "LICENSE.md",
+      "sha256": "be0592a6c76f398356fbf252a4fb43476fb3ca3c45331428c2f4f22c499e8311",
+      "bytes": 1186
+    },
+    {
+      "component": "Microsoft.Extensions.Logging.Abstractions",
+      "version": "8.0.3",
+      "file": "Microsoft.Extensions.Logging.Abstractions/LICENSE.TXT",
+      "source": "https://api.nuget.org/v3-flatcontainer/microsoft.extensions.logging.abstractions/8.0.3/microsoft.extensions.logging.abstractions.8.0.3.nupkg",
+      "sourcePath": "LICENSE.TXT",
+      "sha256": "d7a68596ab69b06f51ca278a6545148e4269a9381c26d597c13df5d88e08cf5b",
+      "bytes": 1139
+    },
+    {
+      "component": "Microsoft.Extensions.Logging.Abstractions",
+      "version": "8.0.3",
+      "file": "Microsoft.Extensions.Logging.Abstractions/THIRD-PARTY-NOTICES.TXT",
+      "source": "https://api.nuget.org/v3-flatcontainer/microsoft.extensions.logging.abstractions/8.0.3/microsoft.extensions.logging.abstractions.8.0.3.nupkg",
+      "sourcePath": "THIRD-PARTY-NOTICES.TXT",
+      "sha256": "b60b2912da28eaa6518593c9e2efb5334ee062d3c42e80d8fdfa806b3dc52977",
+      "bytes": 68910
+    },
+    {
+      "component": "Microsoft.Extensions.DependencyInjection.Abstractions",
+      "version": "8.0.2",
+      "file": "Microsoft.Extensions.DependencyInjection.Abstractions/LICENSE.TXT",
+      "source": "https://api.nuget.org/v3-flatcontainer/microsoft.extensions.dependencyinjection.abstractions/8.0.2/microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg",
+      "sourcePath": "LICENSE.TXT",
+      "sha256": "d7a68596ab69b06f51ca278a6545148e4269a9381c26d597c13df5d88e08cf5b",
+      "bytes": 1139
+    },
+    {
+      "component": "Microsoft.Extensions.DependencyInjection.Abstractions",
+      "version": "8.0.2",
+      "file": "Microsoft.Extensions.DependencyInjection.Abstractions/THIRD-PARTY-NOTICES.TXT",
+      "source": "https://api.nuget.org/v3-flatcontainer/microsoft.extensions.dependencyinjection.abstractions/8.0.2/microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg",
+      "sourcePath": "THIRD-PARTY-NOTICES.TXT",
+      "sha256": "b60b2912da28eaa6518593c9e2efb5334ee062d3c42e80d8fdfa806b3dc52977",
+      "bytes": 68910
+    },
+    {
+      "component": "Microsoft.NETCore.App.Runtime.win-x64",
+      "version": "10.0.13",
+      "file": "dotnet-runtime/LICENSE.TXT",
+      "source": "https://api.nuget.org/v3-flatcontainer/microsoft.netcore.app.runtime.win-x64/10.0.13/microsoft.netcore.app.runtime.win-x64.10.0.13.nupkg",
+      "sourcePath": "LICENSE.TXT",
+      "sha256": "d7a68596ab69b06f51ca278a6545148e4269a9381c26d597c13df5d88e08cf5b",
+      "bytes": 1139
+    },
+    {
+      "component": "Microsoft.NETCore.App.Runtime.win-x64",
+      "version": "10.0.13",
+      "file": "dotnet-runtime/THIRD-PARTY-NOTICES.TXT",
+      "source": "https://api.nuget.org/v3-flatcontainer/microsoft.netcore.app.runtime.win-x64/10.0.13/microsoft.netcore.app.runtime.win-x64.10.0.13.nupkg",
+      "sourcePath": "THIRD-PARTY-NOTICES.TXT",
+      "sha256": "6d15e10a101c6bfff2ab4429ed061bf76c456fc4b23ad6b03e0d0f8377148a21",
+      "bytes": 78041
+    },
+    {
+      "component": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
+      "version": "10.0.13",
+      "file": "dotnet-windowsdesktop/LICENSE",
+      "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsdesktop.app.runtime.win-x64/10.0.13/microsoft.windowsdesktop.app.runtime.win-x64.10.0.13.nupkg",
+      "sourcePath": "LICENSE",
+      "sha256": "a89886665765362eb77e0f8e26602c924520041d1711b2eedc136434fe4d01ab",
+      "bytes": 1137
+    },
+    {
+      "component": "Microsoft.WindowsDesktop.App.Runtime.win-x64/WPF",
+      "version": "10.0.13",
+      "file": "dotnet-windowsdesktop/WPF-THIRD-PARTY-NOTICES.TXT",
+      "source": "https://raw.githubusercontent.com/dotnet/dotnet/4099f83977f4d29604a9aeb971fb0a7bc1d5f699/src/wpf/THIRD-PARTY-NOTICES.TXT",
+      "sourcePath": null,
+      "sha256": "d23dba2fee20c6b59d8f7088ee9ed372459c952a319b7ca90f3eec370cc76eb9",
+      "bytes": 2703
+    },
+    {
+      "component": "Microsoft.WindowsDesktop.App.Runtime.win-x64/WindowsForms",
+      "version": "10.0.13",
+      "file": "dotnet-windowsdesktop/WindowsForms-THIRD-PARTY-NOTICES.TXT",
+      "source": "https://raw.githubusercontent.com/dotnet/dotnet/4099f83977f4d29604a9aeb971fb0a7bc1d5f699/src/winforms/THIRD-PARTY-NOTICES.TXT",
+      "sourcePath": null,
+      "sha256": "5a412b38efae0b162dc0893b319023f4cd14a8985a0f9f9ae01ac052b37a36eb",
+      "bytes": 1966
+    }
+  ]
+}

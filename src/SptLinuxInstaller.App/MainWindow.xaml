@@ -1,0 +1,110 @@
+<Window x:Class="SptLinuxInstaller.App.MainWindow"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
+ Title="SPT Linux Installer" Width="1180" Height="980" MinWidth="1000" MinHeight="720"
+ Background="{StaticResource CanvasBrush}" Foreground="{StaticResource TextBrush}" FontFamily="Segoe UI" FontSize="13"
+ WindowStyle="None" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" Closing="Window_Closing" StateChanged="Window_StateChanged">
+ <shell:WindowChrome.WindowChrome><shell:WindowChrome CaptionHeight="42" ResizeBorderThickness="6" GlassFrameThickness="0" CornerRadius="0" UseAeroCaptionButtons="False"/></shell:WindowChrome.WindowChrome>
+ <Border x:Name="WindowFrame" BorderBrush="{StaticResource LineBrush}" BorderThickness="1" Background="{StaticResource CanvasBrush}">
+ <Grid>
+  <Grid.RowDefinitions><RowDefinition Height="42"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+  <Grid Background="{StaticResource CanvasBrush}" Margin="18,0,6,0">
+   <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+   <StackPanel Orientation="Horizontal" VerticalAlignment="Center"><Ellipse Width="6" Height="6" Fill="{StaticResource AccentBrush}" Margin="0,0,10,0"/><TextBlock Text="SPT  /  LINUX INSTALLER" FontSize="10" FontWeight="SemiBold" Foreground="{StaticResource MutedBrush}"/></StackPanel>
+   <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" shell:WindowChrome.IsHitTestVisibleInChrome="True">
+    <Button Style="{StaticResource CaptionButton}" Click="Minimize_Click" ToolTip="Minimieren" AutomationProperties.Name="Minimieren"><Path Data="M 0 5 L 10 5" Stroke="{StaticResource MutedBrush}" StrokeThickness="1.2"/></Button>
+    <Button x:Name="MaximizeButton" Style="{StaticResource CaptionButton}" Click="Maximize_Click" ToolTip="Maximieren" AutomationProperties.Name="Maximieren"><Path x:Name="MaximizeIcon" Data="M 0 0 L 10 0 L 10 10 L 0 10 Z" Stroke="{StaticResource MutedBrush}" StrokeThickness="1.2"/></Button>
+    <Button Style="{StaticResource CloseCaptionButton}" Click="Close_Click" ToolTip="Schließen" AutomationProperties.Name="Schließen"><Path Data="M 0 0 L 10 10 M 10 0 L 0 10" Stroke="{StaticResource TextBrush}" StrokeThickness="1.2"/></Button>
+   </StackPanel>
+  </Grid>
+ <ScrollViewer x:Name="MainScrollViewer" Grid.Row="1" Style="{StaticResource DarkScrollViewer}" Background="{StaticResource CanvasBrush}" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+ <Grid Margin="30,22,30,18">
+  <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+  <Grid Margin="0,0,0,22">
+   <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+   <StackPanel Orientation="Horizontal">
+    <Border Width="64" Height="64" CornerRadius="14" Background="{StaticResource AccentBrush}" VerticalAlignment="Top" Margin="0,0,18,0"><TextBlock Text="SPT" Foreground="#153429" FontSize="23" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+    <StackPanel><TextBlock Text="Dein SPT-Server. Auf deinem Linux." FontSize="28" FontWeight="SemiBold"/><TextBlock Text="Installieren, prüfen und aktualisieren – direkt von Windows aus." Foreground="{StaticResource MutedBrush}" Margin="0,7,0,0"/></StackPanel>
+   </StackPanel>
+   <Button Grid.Column="1" Content="GitHub  ↗" Click="GitHub_Click" VerticalAlignment="Top" Margin="16,8,0,0"/>
+  </Grid>
+  <Grid Grid.Row="1">
+   <Grid.ColumnDefinitions><ColumnDefinition Width="0.95*"/><ColumnDefinition Width="20"/><ColumnDefinition Width="1.05*"/></Grid.ColumnDefinitions>
+   <Border Style="{StaticResource Card}">
+    <StackPanel x:Name="ConnectionForm">
+     <TextBlock Text="01   VERBINDUNG" Foreground="{StaticResource AccentBrush}" FontSize="11" FontWeight="Bold"/>
+     <TextBlock Text="Mit deinem Linux-Server verbinden" FontSize="20" FontWeight="SemiBold" Margin="0,8,0,18"/>
+     <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="12"/><ColumnDefinition Width="84"/></Grid.ColumnDefinitions>
+      <StackPanel><TextBlock Text="Server-IP oder Hostname" Style="{StaticResource Label}"/><TextBox x:Name="HostTextBox" ToolTip="Zum Beispiel 203.0.113.10 oder server.example.com" LostFocus="Host_LostFocus"/></StackPanel>
+      <StackPanel Grid.Column="2"><TextBlock Text="SSH-Port" Style="{StaticResource Label}"/><TextBox x:Name="SshPortTextBox" Text="22"/></StackPanel>
+     </Grid>
+     <Grid Margin="0,14,0,0"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="12"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+      <StackPanel><TextBlock Text="SSH-Benutzer" Style="{StaticResource Label}"/><TextBox x:Name="UserTextBox" Text="root"/></StackPanel>
+      <StackPanel Grid.Column="2"><TextBlock Text="Anmeldung" Style="{StaticResource Label}"/><ComboBox x:Name="AuthenticationCombo" SelectedIndex="0" SelectionChanged="Authentication_Changed"><ComboBoxItem Content="Passwort"/><ComboBoxItem Content="Privater SSH-Schlüssel"/></ComboBox></StackPanel>
+     </Grid>
+     <StackPanel x:Name="PasswordPanel" Margin="0,14,0,0"><TextBlock Text="SSH-Passwort" Style="{StaticResource Label}"/><PasswordBox x:Name="CredentialPasswordBox"/></StackPanel>
+     <StackPanel x:Name="KeyPanel" Visibility="Collapsed" Margin="0,14,0,0">
+      <TextBlock Text="Private Schlüsseldatei" Style="{StaticResource Label}"/>
+      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBox x:Name="KeyPathTextBox"/><Button Grid.Column="1" Content="…" Margin="8,0,0,0" Click="BrowseKey_Click"/></Grid>
+      <TextBlock Text="Private Datei ohne .pub auswählen. Der passende öffentliche Schlüssel muss auf dem Server zugelassen sein." FontSize="11" Foreground="{StaticResource MutedBrush}" Margin="0,7,0,0"/>
+      <TextBlock Text="Schlüssel-Passphrase (falls gesetzt)" Style="{StaticResource Label}" Margin="0,12,0,7"/><PasswordBox x:Name="KeyPassphraseBox"/>
+     </StackPanel>
+     <TextBlock Text="Benötigt root oder sudo ohne Passwort. Zugangsdaten bleiben nur für diese Sitzung im Speicher." FontSize="12" Foreground="{StaticResource MutedBrush}" Margin="0,11,0,0"/>
+     <CheckBox x:Name="RememberCheck" Content="Serveradresse und Optionen auf diesem PC merken" IsChecked="True"/>
+     <Button x:Name="ConnectButton" Content="Verbindung prüfen" Click="Connect_Click" HorizontalAlignment="Left" Margin="0,18,0,0"/>
+     <Border Background="#172F2C" CornerRadius="7" Padding="13" Margin="0,18,0,0"><TextBlock Text="SSH dient nur der Einrichtung und Verwaltung. Dein Spiel verbindet sich später direkt mit der Server-IP – ohne Tunnel." FontSize="12" Foreground="#B6DFD0"/></Border>
+    </StackPanel>
+   </Border>
+   <Border Grid.Column="2" Style="{StaticResource Card}">
+    <StackPanel>
+     <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="02   INSTALLATION" Foreground="{StaticResource AccentBrush}" FontSize="11" FontWeight="Bold"/><TextBlock Grid.Column="1" Text="REINER SERVER · OHNE MODS" Foreground="{StaticResource MutedBrush}" FontSize="10"/></Grid>
+     <Grid Margin="0,12,0,14"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+      <StackPanel><TextBlock Text="Neueste stabile SPT-Version" Foreground="{StaticResource MutedBrush}" FontSize="12"/><TextBlock x:Name="LatestVersionText" Text="Wird geprüft …" FontSize="29" FontWeight="SemiBold" Margin="0,3,0,0"/><TextBlock x:Name="ReleaseDetailText" Text="Direkt aus der offiziellen Veröffentlichung." FontSize="12" Foreground="{StaticResource MutedBrush}" Margin="0,4,0,0"/></StackPanel>
+      <Button x:Name="RefreshButton" Grid.Column="1" Content="Prüfen ↻" Click="Refresh_Click" VerticalAlignment="Center" Margin="12,0,0,0"/>
+     </Grid>
+     <StackPanel x:Name="DeploymentForm">
+      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="12"/><ColumnDefinition Width="90"/></Grid.ColumnDefinitions>
+       <StackPanel><TextBlock Text="Adresse für den Spielclient" Style="{StaticResource Label}"/><TextBox x:Name="AdvertisedHostTextBox" ToolTip="Öffentliche IPv4 oder DNS-Name, ohne https://"/></StackPanel>
+       <StackPanel Grid.Column="2"><TextBlock Text="Server-Port" Style="{StaticResource Label}"/><TextBox x:Name="GamePortTextBox" Text="6969"/></StackPanel>
+      </Grid>
+      <Expander Header="Installationspfad und weitere Optionen" Margin="0,13,0,10">
+       <StackPanel Margin="0,12,0,2"><TextBlock Text="Installationsordner auf Linux" Style="{StaticResource Label}"/><TextBox x:Name="InstallDirectoryTextBox" Text="/opt/spt-server"/>
+        <TextBlock Text="Dienstname" Style="{StaticResource Label}" Margin="0,12,0,7"/><TextBox x:Name="ServiceNameTextBox" Text="spt-server"/><CheckBox x:Name="LocalOnlyCheck" Content="Nur lokal binden (für einen vorhandenen Reverseproxy)"/>
+       </StackPanel>
+      </Expander>
+     </StackPanel>
+     <Border Background="{StaticResource FieldBrush}" CornerRadius="7" Padding="14" Margin="0,0,0,14">
+      <StackPanel>
+      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions><StackPanel><TextBlock Text="INSTALLIERT" FontSize="10" Foreground="{StaticResource MutedBrush}"/><TextBlock x:Name="InstalledText" Text="Noch nicht geprüft" FontWeight="SemiBold" Margin="0,5,0,0"/></StackPanel><StackPanel Grid.Column="1"><TextBlock Text="DIENST" FontSize="10" Foreground="{StaticResource MutedBrush}"/><TextBlock x:Name="ServiceText" Text="—" FontWeight="SemiBold" Margin="0,5,0,0"/></StackPanel></Grid>
+      <TextBlock FontSize="11" Foreground="{StaticResource MutedBrush}" Margin="0,9,0,0"><Run Text="Gewählter Installationspfad: "/><Run Text="{Binding Text, ElementName=InstallDirectoryTextBox}"/></TextBlock>
+      </StackPanel>
+     </Border>
+     <Border x:Name="ExistingServerPanel" Visibility="Collapsed" Background="#172F2C" CornerRadius="7" Padding="14" Margin="0,0,0,14">
+      <StackPanel>
+       <TextBlock Text="VORHANDENE SPT-SERVER" Foreground="{StaticResource AccentBrush}" FontSize="11" FontWeight="Bold"/>
+       <TextBlock x:Name="ExistingServerText" Foreground="#B6DFD0" FontSize="12" Margin="0,8,0,0"/>
+       <TextBlock Text="Für einen bereits vorhandenen Server ist keine Neuinstallation nötig. Diese Funde werden nur angezeigt; eine automatische Übernahme findet nicht statt." Foreground="{StaticResource MutedBrush}" FontSize="12" Margin="0,10,0,0"/>
+      </StackPanel>
+     </Border>
+     <Button x:Name="InstallButton" Content="Neueste Version installieren" Style="{StaticResource PrimaryButton}" Click="Install_Click"/>
+     <TextBlock Text="Updates werden bewusst gestartet. Vorher werden Spielstände gesichert. Dein SPT-Spielclient muss zur Serverversion passen." Foreground="{StaticResource MutedBrush}" FontSize="12" Margin="0,10,0,0"/>
+    </StackPanel>
+   </Border>
+  </Grid>
+  <Border Grid.Row="2" Style="{StaticResource Card}" Margin="0,20,0,0" Padding="20,16">
+   <Grid><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+    <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><StackPanel><TextBlock Text="SERVER VERWALTEN" FontSize="11" Foreground="{StaticResource AccentBrush}" FontWeight="Bold"/><TextBlock x:Name="StatusText" Text="Gib deine Serverdaten ein und prüfe die Verbindung." FontSize="12" Foreground="{StaticResource MutedBrush}" Margin="0,7,0,0"/></StackPanel>
+     <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="16,0,0,0"><Button x:Name="StartButton" Content="Start" Click="Start_Click" Padding="13,7"/><Button x:Name="StopButton" Content="Stop" Click="Stop_Click" Padding="13,7" Margin="8,0,0,0"/><Button x:Name="RestartButton" Content="Neustart" Click="Restart_Click" Padding="13,7" Margin="8,0,0,0"/><Button x:Name="LogsButton" Content="Logs" Click="Logs_Click" Padding="13,7" Margin="8,0,0,0"/><Button x:Name="RollbackButton" Content="Zurücksetzen" Click="Rollback_Click" Padding="13,7" Margin="8,0,0,0"/></StackPanel>
+    </Grid>
+    <ProgressBar x:Name="OperationProgressBar" Grid.Row="1" Height="3" Foreground="{StaticResource AccentBrush}" Background="#31414A" BorderThickness="0" Margin="0,14,0,12"/>
+    <TextBox x:Name="LogBox" Grid.Row="2" Height="90" FontFamily="Cascadia Mono, Consolas" FontSize="11" IsReadOnly="True" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Text="Aktivitätsprotokoll – hier erscheinen die einzelnen Schritte."/>
+    <Grid Grid.Row="3" Margin="0,12,0,0"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock x:Name="AddressText" Text="Verbindungsadresse nach der Einrichtung hier verfügbar." Foreground="{StaticResource MutedBrush}" FontSize="12" VerticalAlignment="Center"/><Button x:Name="CopyAddressButton" Grid.Column="1" Content="Adresse kopieren" Click="CopyAddress_Click" Padding="12,5" MinHeight="30"/></Grid>
+   </Grid>
+  </Border>
+  <TextBlock x:Name="VersionFooter" Grid.Row="3" Text="SPT Linux Installer  ·  Community-Projekt von C1yHAX  ·  Kein offizieller SPT-Installer" FontSize="11" Foreground="#7F959F" Margin="0,16,0,0"/>
+ </Grid>
+ </ScrollViewer>
+ </Grid>
+ </Border>
+</Window>

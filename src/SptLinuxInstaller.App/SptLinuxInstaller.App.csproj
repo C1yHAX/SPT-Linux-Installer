@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <AssemblyName>SPT-Linux-Installer</AssemblyName>
+    <RootNamespace>SptLinuxInstaller.App</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <RuntimeFrameworkVersion>10.0.13</RuntimeFrameworkVersion>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../SptLinuxInstaller.Core/SptLinuxInstaller.Core.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,17 @@
+**/bin/
+**/obj/
+.vs/
+.idea/
+artifacts/
+*.user
+*.suo
+*.log
+__pycache__/
+.pytest_cache/
+*.pyc
+TestResults/
+local-settings.json
+known-hosts.json
+*.pem
+*.key
+.env
