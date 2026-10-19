@@ -40,9 +40,9 @@ bytes and checksums remain reproducible after a Git checkout.
 3. Refresh the corresponding complete license and notice texts from those
    exact official package versions or their recorded source commits. Update
    `sources.json` and the version table in `THIRD-PARTY-NOTICES.md` together.
-4. Include the entire `licenses/` directory and root `THIRD-PARTY-NOTICES.md`
-   in the portable ZIP alongside the executable and root project `LICENSE`.
-   Verify the packaged license files against the manifest.
+4. Run `tools/Package-Portable.ps1`. It verifies every source text against the
+   manifest and combines them, unchanged, with the project's license into
+   `LICENSE.txt`. The portable ZIP contains only that file and the executable.
 
 These texts cover the libraries redistributed inside the Windows application.
 They do not relicense SPT, EFT, downloaded server/runtime packages, or Linux

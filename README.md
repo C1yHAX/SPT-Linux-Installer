@@ -36,6 +36,7 @@ Das Repository enthält **nur den Assistenten**, keine Kopie des SPT-Servers, ke
 7. Die angezeigte Adresse im normalen SPT-Launcher eintragen, beispielsweise `server.example.com:6969`, ohne `https://`.
 
 Die Oberfläche ist zunächst auf Deutsch. Sie benötigt auf dem Windows-PC keine Administratorrechte.
+Das ZIP enthält nur die EXE und eine zusammengefasste `LICENSE.txt`. Die Dokumentation bleibt im Repository.
 
 ## Voraussetzungen
 
@@ -90,9 +91,11 @@ Benötigt das [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0). 
 dotnet test tests/SptLinuxInstaller.Tests/SptLinuxInstaller.Tests.csproj -c Release
 python -m unittest discover -s tests/linux -v
 dotnet publish src/SptLinuxInstaller.App/SptLinuxInstaller.App.csproj -c Release -r win-x64 --self-contained true -o artifacts/windows
+./tools/Package-Portable.ps1
 ```
 
 Die portable Anwendung liegt dann unter `artifacts/windows/SPT-Linux-Installer.exe`.
+Das ZIP liegt unter `artifacts/SPT-Linux-Installer-Windows-x64.zip` und enthält ausschließlich die EXE und `LICENSE.txt`.
 Ein Git-Tag `v*` löst den Releaseworkflow aus, der Tests, Windows-Build, ZIP und SHA-256-Datei veröffentlicht. Die SPT-Version wird nicht in diesem Build fest eingebaut.
 
 ## Aufbau

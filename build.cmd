@@ -7,12 +7,13 @@ if errorlevel 1 (
   pause
   exit /b 1
 )
-powershell -NoProfile -Command "$ErrorActionPreference='Stop'; Copy-Item README.md,LICENSE,THIRD-PARTY-NOTICES.md artifacts/windows/; Copy-Item licenses,docs artifacts/windows/ -Recurse -Force"
+powershell -NoProfile -ExecutionPolicy Bypass -File tools\Package-Portable.ps1
 if errorlevel 1 (
-  echo Documentation packaging failed.
+  echo Packaging failed.
   pause
   exit /b 1
 )
 echo.
 echo Ready: artifacts\windows\SPT-Linux-Installer.exe
+echo ZIP: artifacts\SPT-Linux-Installer-Windows-x64.zip
 pause

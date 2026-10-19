@@ -40,13 +40,11 @@ jobs:
           $releaseVersion = $env:GITHUB_REF_NAME.Substring(1)
           dotnet publish src/SptLinuxInstaller.App/SptLinuxInstaller.App.csproj --configuration Release --runtime win-x64 --self-contained true --output artifacts/windows -p:Version=$releaseVersion
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
-          Copy-Item README.md, LICENSE, THIRD-PARTY-NOTICES.md artifacts/windows/
-          Copy-Item licenses, docs artifacts/windows/ -Recurse
           $previewPath = Join-Path $PWD 'artifacts/release-preview.png'
           $app = Start-Process artifacts/windows/SPT-Linux-Installer.exe -ArgumentList @('--render-preview', ('"' + $previewPath + '"')) -WindowStyle Hidden -PassThru
           if (-not $app.WaitForExit(30000)) { throw 'Published application did not finish its startup check.' }
           if ($app.ExitCode -ne 0 -or -not (Test-Path $previewPath)) { throw 'Published application failed its startup check.' }
-          Compress-Archive -Path artifacts/windows/* -DestinationPath artifacts/SPT-Linux-Installer-Windows-x64.zip
+          ./tools/Package-Portable.ps1
           $hash = (Get-FileHash artifacts/SPT-Linux-Installer-Windows-x64.zip -Algorithm SHA256).Hash.ToLowerInvariant()
           "$hash  SPT-Linux-Installer-Windows-x64.zip" | Set-Content artifacts/SHA256SUMS.txt -Encoding ascii
       - name: Publish release assets

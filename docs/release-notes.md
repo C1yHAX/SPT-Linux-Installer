@@ -19,6 +19,7 @@ Unterstützt werden Windows 10/11 x64 sowie Ubuntu 22.04/24.04/26.04 und Debian
 12/13 auf dem Linux-Server. Der SSH-Benutzer benötigt root oder sudo ohne
 Passwort. Der Spielclient verbindet sich direkt mit der Serveradresse.
 
-Das Paket enthält den Assistenten, Dokumentation und Lizenzhinweise. Es enthält
-keine Mods, kein Fika und keine EFT-Spieldateien. Die SHA-256-Prüfsumme steht in
-`SHA256SUMS.txt`.
+Das ZIP enthält nur `SPT-Linux-Installer.exe` und `LICENSE.txt` mit den
+zusammengefassten Lizenztexten. Die Dokumentation steht im Repository.
+Keine Mods, kein Fika und keine EFT-Spieldateien. Die SHA-256-Prüfsumme steht
+in `SHA256SUMS.txt`.

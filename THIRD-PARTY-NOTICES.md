@@ -5,7 +5,9 @@ It is an independent community project, not an official SPT release or launcher.
 
 The portable Windows application is self-contained and includes the .NET runtime,
 the WPF desktop runtime, SSH.NET, and its runtime dependencies. The complete
-upstream license and notice texts are included in the adjacent `licenses/` folder:
+upstream license and notice texts are stored in this repository's `licenses/`
+folder. The portable ZIP combines those texts and the project's license into
+one `LICENSE.txt` alongside the executable:
 
 | Component | Verified package version | License and notices |
 | --- | --- | --- |
@@ -25,8 +27,9 @@ upstream notices.
 [Source provenance and SHA-256 hashes](licenses/sources.json) identify the exact
 NuGet packages and immutable upstream commits used for these files. See
 [licenses/README.md](licenses/README.md) for the collection scope and update rules.
-When redistributing the portable application, keep this notice, the project's
-LICENSE, and the complete `licenses/` folder alongside the executable.
+When redistributing the portable application, keep the generated `LICENSE.txt`
+alongside the executable. It contains every upstream text listed above in full.
+The documentation and source license folders are not included in the portable ZIP.
 
 The table describes the verified build dependency set. A later .NET SDK/runtime
 patch or package update requires refreshing and checking the corresponding

@@ -16,15 +16,15 @@ jobs:
           dotnet-version: '10.0.x'
       - run: dotnet test tests/SptLinuxInstaller.Tests/SptLinuxInstaller.Tests.csproj --configuration Release
       - run: dotnet publish src/SptLinuxInstaller.App/SptLinuxInstaller.App.csproj --configuration Release --runtime win-x64 --self-contained true --output artifacts/windows
-      - name: Include licenses and documentation
+      - name: Package portable application
         shell: pwsh
-        run: |
-          Copy-Item README.md, LICENSE, THIRD-PARTY-NOTICES.md artifacts/windows/
-          Copy-Item licenses, docs artifacts/windows/ -Recurse
+        run: ./tools/Package-Portable.ps1
       - uses: actions/upload-artifact@v4
         with:
           name: SPT-Linux-Installer-Windows-x64
-          path: artifacts/windows/
+          path: |
+            artifacts/windows/SPT-Linux-Installer.exe
+            artifacts/windows/LICENSE.txt
           retention-days: 14
   linux:
     runs-on: ubuntu-latest
